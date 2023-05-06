@@ -1,0 +1,207 @@
+I have a recursion error. This is te stack trace:
+
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 428, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/applications.py", line 276, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/cors.py", line 92, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/cors.py", line 147, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/routing.py", line 237, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/routing.py", line 163, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/Desktop/Creative/Web Development/FarmStackProject/backend/main.py", line 53, in delete_blog
+    response = await remove_blog(id)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/Desktop/Creative/Web Development/FarmStackProject/backend/main.py", line 53, in delete_blog
+    response = await remove_blog(id)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/Desktop/Creative/Web Development/FarmStackProject/backend/main.py", line 53, in delete_blog
+    response = await remove_blog(id)
+               ^^^^^^^^^^^^^^^^^^^^^
+  [Previous line repeated 966 more times]
+RecursionError: maximum recursion depth exceeded
+INFO:     127.0.0.1:52031 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52031 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52031 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52032 - "DELETE /api/blog1 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 428, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/applications.py", line 276, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/cors.py", line 92, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/cors.py", line 147, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/routing.py", line 237, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/.local/share/virtualenvs/backend-TWWhOgDz/lib/python3.11/site-packages/fastapi/routing.py", line 163, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/Desktop/Creative/Web Development/FarmStackProject/backend/main.py", line 53, in delete_blog
+    response = await remove_blog(id)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/Desktop/Creative/Web Development/FarmStackProject/backend/main.py", line 53, in delete_blog
+    response = await remove_blog(id)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/austo/Desktop/Creative/Web Development/FarmStackProject/backend/main.py", line 53, in delete_blog
+    response = await remove_blog(id)
+               ^^^^^^^^^^^^^^^^^^^^^
+  [Previous line repeated 966 more times]
+RecursionError: maximum recursion depth exceeded
+
+Here is my code for the backend:
+from model import Blog
+#MongoDB driver
+import motor.motor_asyncio
+
+client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017/')
+
+database = client.blogList
+collection = database.blog
+
+async def fetch_one_blog(id):
+    document = await collection.find_one({"id": id})
+    return document
+
+async def fetch_all_blogs():
+    blogs = []
+    cursor = collection.find({})
+    async for document in cursor:
+        blogs.append(Blog(**document))
+    return blogs
+
+async def create_blog(Blog):
+    document = Blog
+    result = await collection.insert_one(document)
+    return document
+
+async def update_blog(title, body, id):
+    await collection.update_one({"id": id}, {"$set": {
+        "title": title,
+        "body": body
+    }})
+
+    document = await collection.find_one({"title": title, "body": body})
+    return document
+
+async def remove_blog(id):
+    await collection.delete_one({"id": id})
+    return True
+
+: import asyncio
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from database import *
+
+app = FastAPI()
+
+origins = ['*']
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+def read_root():
+    return{"Ping" : "Pong"}
+
+@app.get("/api/blog")
+async def get_all_blog():
+    response = await fetch_all_blogs()
+    return response
+
+@app.get("/api/blog{id}", response_model=Blog)
+async def get_blog_by_id(id: int):
+    response = await fetch_one_blog(id)
+    if response:
+        return response
+    else:
+        raise HTTPException(404, f"There is no blog with this id {id}")
+
+@app.post("/api/blog", response_model=Blog)
+async def post_blog(blog:Blog):
+    response = await create_blog(blog.dict())
+    if response:
+        return 1
+    else:
+        raise HTTPException(400, "Something went wrong / Bad Request")
+
+@app.put("/api/blog{id}/", response_model=Blog)
+async def put_blog(id: int, body: str, title: str):
+    response = await update_blog(title, body, id)
+    if response:
+        return 1
+    else:
+        raise HTTPException(404, f"There is no blog with this id {id}")
+
+@app.delete("/api/blog{id}")
+async def delete_blog(id: int):
+    response = await remove_blog(id)
+    if response:
+        return "Succesfully deleted blog"
+    else:
+        raise HTTPException(404, f"There is no blog with this id {id}")
